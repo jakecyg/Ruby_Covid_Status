@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'about/index'
   get 'home/index'
   resources :regions, only: %i[index show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :about, only: %i[index]
+
+  root to: "home#index"
 end
