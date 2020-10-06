@@ -16,15 +16,22 @@ stats = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
 
 stats.each do |s|
   region = Region.find_or_create_by(name: s['WHO Region'])
-  puts region.name
+  # puts region.name
   if region&.valid?
     country = region.countries.create(
       name: s['Country/Region']
     )
-    puts country
+    country.save
+    pm = PrimaryMetric.create(
+      confirmed: s['Confirmed'],
+      deaths: s['Deaths'],
+      recovered: s['Recovered'],
+      active: s['Active']
+    )
+    pm.country = country
   else
-    puts "Invalid production company: #{production_company} for the movie #{m['original_title']}."
+    puts "Invalid region: #{region} for the country #{m['Country/Region']}."
   end
 end
-# puts "Created #{ProductionCompany.count} production companies"
-# puts "Created #{Movie.count} movies"
+puts "Created #{Region.count} regions"
+puts "Created #{Country.count} countries"

@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  deathPerHudred: 1
+  deathPerHundred: 1
   recoveredPerHundred: 1
   deathPerHundredRecovered: 1
 
 two:
-  deathPerHudred: 1
+  deathPerHundred: 1
   recoveredPerHundred: 1
   deathPerHundredRecovered: 1
